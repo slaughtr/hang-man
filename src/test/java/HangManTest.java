@@ -19,13 +19,12 @@ public class HangManTest {
     assertEquals(true, gotWord instanceof String);
   }
 
-  // @Ignore
-  // @Test
-  // public void getWordToArray_returnCharArray_true(){
-  //   HangMan testGame = new HangMan("potato", 'a');
-  //   List<Character> charArray = testGame.getWordToArray();
-  //   assertEquals(true, charArray instanceof List<Character>);
-  // }
+  @Test
+  public void getWordToArray_returnCharArray_true(){
+    HangMan testGame = new HangMan("potato", 'a');
+    List<Character> charArray = testGame.getWordToArray();
+    assertEquals(true, charArray.equals(Arrays.asList('p', 'o', 't', 'a', 't', 'o')));
+  }
 
   @Test
   public void makeBlanksArray_returnArraySameLengthAsCharArray_true(){
@@ -35,5 +34,31 @@ public class HangManTest {
     assertEquals(true, charArray.size() == blanksArray.size());
   }
 
+  @Test
+  public void makeBlanksArray_returnBlanksArraySameLengthAsCharArray_true(){
+    HangMan testGame = new HangMan("potato", 'a');
+    List<Character> blanksArray = testGame.makeBlanksArray();
+    assertEquals(Arrays.asList('-', '-', '-', '-', '-', '-'), blanksArray);
+  }
+
+  @Test
+  public void wordContainsLetter_returnTrueIfWordContainsLetter_true(){
+    HangMan testGame = new HangMan("potato", 'a');
+    assertEquals(true, testGame.wordContainsLetter());
+  }
+
+  @Test
+  public void wordContainsLetter_returnFalseIfWordDoesNotContainLetter_false(){
+    HangMan testGame = new HangMan("potato", 'q');
+    assertEquals(false, testGame.wordContainsLetter());
+  }
+
+  @Test
+  public void replaceBlanksWithCorrectGuesses_returnBlanksArrayPopulatedWithLetter_blanksABlanks() {
+    HangMan testGame = new HangMan("potato", 'a');
+    List<Character> blanksArray = testGame.makeBlanksArray();
+    blanksArray = testGame.replaceBlanksWithCorrectGuesses();
+    assertEquals(Arrays.asList('-', '-', '-', 'a', '-', '-'), blanksArray);
+  }
 
 }

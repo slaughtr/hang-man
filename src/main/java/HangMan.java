@@ -5,6 +5,7 @@ import java.util.Arrays;
 public class HangMan {
   private String mWord;
   private char mUserLetter;
+  private List<Character> blanksArray = new ArrayList<Character>();
 
   public HangMan(String baseWord, char userLetter) {
     mWord = baseWord;
@@ -26,13 +27,28 @@ public class HangMan {
   }
 
   public List<Character> makeBlanksArray() {
-    List<Character> importedList = getWordToArray();
-
-    for (char letter : importedList) {
-      letter = '-';
+    for (Character letter : getWordToArray()) {
+      blanksArray.add(new Character('-'));
     }
-    return importedList;
+    return blanksArray;
   }
 
+  public boolean wordContainsLetter() {
+    if (getWordToArray().contains(mUserLetter)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  public List<Character> replaceBlanksWithCorrectGuesses() {
+    List<Character> myWord = getWordToArray();
+    for (Integer i = 0; i < myWord.size(); i++) {
+      if (myWord.get(i) == mUserLetter) {
+        blanksArray.set(i, mUserLetter);
+      }
+    }
+    return blanksArray;
+  }
 
 }
