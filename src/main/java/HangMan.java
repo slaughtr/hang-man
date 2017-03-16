@@ -4,12 +4,11 @@ import java.util.Arrays;
 
 public class HangMan {
   private String mWord;
-  private char mUserLetter;
+  // private char mUserLetter;
   private List<Character> blanksArray = new ArrayList<Character>();
 
-  public HangMan(String baseWord, char userLetter) {
-    mWord = baseWord;
-    mUserLetter = userLetter;
+  public HangMan() {
+    mWord = "potato";
   }
 
   public String getWord() {
@@ -33,19 +32,19 @@ public class HangMan {
     return blanksArray;
   }
 
-  public boolean wordContainsLetter() {
-    if (getWordToArray().contains(mUserLetter)) {
+  public boolean wordContainsLetter(char userLetter) {
+    if (getWordToArray().contains(userLetter)) {
       return true;
     } else {
       return false;
     }
   }
 
-  public List<Character> replaceBlanksWithCorrectGuesses() {
+  public List<Character> replaceBlanksWithCorrectGuesses(char userLetter) {
     List<Character> myWord = getWordToArray();
     for (Integer i = 0; i < myWord.size(); i++) {
-      if (myWord.get(i) == mUserLetter) {
-        blanksArray.set(i, mUserLetter);
+      if (myWord.get(i) == userLetter) {
+        blanksArray.set(i, userLetter);
       }
     }
     return blanksArray;
