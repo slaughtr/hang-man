@@ -61,4 +61,13 @@ public class HangManTest {
     assertEquals(Arrays.asList('-', '-', '-', 'a', '-', '-'), blanksArray);
   }
 
+  @Test
+  public void checkIfArraysSame_checkCharArrayAndBlankArrayForSameness_true(){
+    HangMan testGame = new HangMan("aaaa", 'a');
+    List<Character> charArray = testGame.getWordToArray();
+    List<Character> blanksArray = testGame.makeBlanksArray();
+    blanksArray = testGame.replaceBlanksWithCorrectGuesses();
+    assertEquals(blanksArray, charArray);
+  }
+
 }
