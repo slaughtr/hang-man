@@ -1,5 +1,8 @@
 import org.junit.*;
 import static org.junit.Assert.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Arrays;
 
 public class HangManTest {
 
@@ -16,18 +19,21 @@ public class HangManTest {
     assertEquals(true, gotWord instanceof String);
   }
 
-  @Test
-  public void getWordToArray_returnCharArray_true(){
-    HangMan testGame = new HangMan("potato", 'a');
-    char[] charArray = testGame.getWordToArray();
-    assertEquals(true, charArray instanceof char[]);
-  }
+  // @Ignore
+  // @Test
+  // public void getWordToArray_returnCharArray_true(){
+  //   HangMan testGame = new HangMan("potato", 'a');
+  //   List<Character> charArray = testGame.getWordToArray();
+  //   assertEquals(true, charArray instanceof List<Character>);
+  // }
 
   @Test
   public void makeBlanksArray_returnArraySameLengthAsCharArray_true(){
     HangMan testGame = new HangMan("potato", 'a');
-    char[] charArray = testGame.getWordToArray();
-    List<char> blanksArray = testGame.makeBlanksArray();
-    assertEquals(true, charArray.length() == blanksArray.length());
+    List<Character> charArray = testGame.getWordToArray();
+    List<Character> blanksArray = testGame.makeBlanksArray();
+    assertEquals(true, charArray.size() == blanksArray.size());
   }
+
+
 }

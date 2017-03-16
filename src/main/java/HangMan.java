@@ -15,17 +15,24 @@ public class HangMan {
     return mWord;
   }
 
-  public char[] getWordToArray() {
+  public List<Character> getWordToArray() {
     char[] charArray = mWord.toCharArray();
-    return charArray;
+    List<Character> charList = new ArrayList<Character>();
+
+    for (char letters : charArray) {
+      charList.add(letters);
+    }
+    return charList;
   }
 
-  public char[] makeBlanksArray() {
-    List<char> copiedCharArray = Arrays.asList(getWordToArray());
+  public List<Character> makeBlanksArray() {
+    List<Character> importedList = getWordToArray();
 
-    for (char letter : copiedCharArray) {
+    for (char letter : importedList) {
       letter = '-';
     }
+    return importedList;
   }
+
 
 }
